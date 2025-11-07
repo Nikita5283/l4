@@ -6,21 +6,19 @@
         {
             //1.9
             Console.WriteLine("1.9");
-            Console.Write("Введите длину списка: ");
-            int len_list = Convert.ToInt32(Console.ReadLine());
-            List<int> lst = new List<int>();
+            Collections.ReverseList();
 
-            for (int i = 0; i < len_list; i++)
-            {
-                Console.Write("Введите эл-т списка под индексом " + i + ": ");
-                lst.Add(Convert.ToInt32(Console.ReadLine()));
-            }
+            //Collections.RevList();
 
-            Collections col1 = new Collections(lst);
-            col1.ReverseList();
-
-            //col1.RevList();
-
+            //2.9
+            Console.WriteLine("2.9");
+            Console.WriteLine("Введите элемент F: ");
+            int F = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите элемент E слева и справа от которого нужно вставить элемент F: ");
+            int E = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите индекс, на который нужно поместить эл-т E");
+            int indE = Convert.ToInt32(Console.ReadLine());
+            Collections.Insert(F, E, indE);
         }
     }
 }
