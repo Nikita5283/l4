@@ -24,13 +24,13 @@ namespace l4_67
 
         public static Point operator --(Point point)
         {
-            Console.WriteLine("Координаты x и y уменьшены на 1");
+            Console.WriteLine("Координаты x и y уменьшены на 1: ");
             return new Point(--point._x, --point._y);
         }
 
         public static Point operator -(Point point)
         {
-            Console.WriteLine("Координаты x и y переставлены");
+            Console.WriteLine("Координаты x и y переставлены: ");
             return new Point(point._y, point._x);
         }
 
@@ -42,13 +42,36 @@ namespace l4_67
 
         public static explicit operator double(Point p)
         {
-            Console.Write("Ккоордината y: ");
+            Console.Write("Координата y: ");
             return (double)p._y;
+        }
+
+        public static Point operator -(Point p, int num)
+        {
+            Console.WriteLine("Координата x уменьшена на введенное число: ");
+            return new Point(p._x - num, p._y);
+        }
+
+        public static Point operator -(int num, Point p)
+        {
+            Console.WriteLine("Координата y уменьшена на введенное число: ");
+            return new Point(p._x, p._y - num);
+        }
+
+        public static double operator -(Point p1, Point p2)
+        {
+            double dx = p1._x - p2._x;
+            double dy = p1._y - p2._y;
+            double distance = Math.Sqrt(dx * dx + dy * dy);
+
+            Console.Write($"Расстояние между точкой с координатами x = {p1._x}; y = {p1._y} и точкой " +
+                $"с координатами  x = {p2._x}; y = {p2._y}: ");
+            return distance;
         }
 
         public override string ToString()
         {
-            return "Координаты точки: x = " + _x + " y = " + _y;
+            return "Координаты точки: x = " + _x + "; y = " + _y;
         }
 
     }

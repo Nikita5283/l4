@@ -4,57 +4,86 @@
     {
         static void Main(string[] args)
         {
+            double x = 0;
+            double y = 0;
             try
             {
                 Console.Write("Введите координату x: ");
-                double x = Convert.ToDouble(Console.ReadLine());
+                x = Convert.ToDouble(Console.ReadLine());
                 Console.Write("Введите координату y: ");
-                double y = Convert.ToDouble(Console.ReadLine());
+                y = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine();
-
-                Point point = new Point(x, y);
-
-                Console.WriteLine(point.ToString()); // Метод ToString
-                Console.WriteLine(point.Interval());
-
-                // Унарные операции
-                // Операция --
-                Point point_lower = new Point(x, y);
-                point = --point_lower;
-                Console.WriteLine(point.ToString());
-
-                // Операция -
-                Point point_change = new Point(x, y);
-                point = -point_change;
-                Console.WriteLine(point.ToString());
-
-                // Операции приведения типа
-                // Неявное приведение к Int
-                Point point_type = new Point(x, y);
-                int x_int = point_type;
-                Console.WriteLine(x_int);
-
-                // Явное приведение к Double
-                double y_double = (double)point_type;
-                Console.WriteLine(y_double);
-
-                // Бинарные операции
-                // – Point p, целое число (левосторонняя операция, уменьшается координата х)
-                Point point_leftx = new Point(x, y);
-                Console.WriteLine("Введите целое число")
-                int int_num = ;
-                point = 
-
-                // – целое число, Point p (правосторонняя операция, уменьшается координата y)
-
-
-                //– Point p – вычисляется расстояние до точки p, результатом должно быть вещественное число.
 
             }
             catch
             {
                 Console.WriteLine("Неверный тип данных! Должен быть double");
             }
+
+            Point point = new Point(x, y);
+
+            Console.WriteLine(point.ToString());
+            Console.WriteLine(point.Interval());
+
+            // Унарные операции
+            // Операция --
+            point = --point;
+            Console.WriteLine(point.ToString());
+
+            // Операция -
+            point = -point;
+            Console.WriteLine(point.ToString());
+
+            // Операции приведения типа
+            // Неявное приведение к Int
+            int x_int = point;
+            Console.WriteLine(x_int);
+
+            // Явное приведение к Double
+            double y_double = (double)point;
+            Console.WriteLine(y_double);
+
+            // Бинарные операции
+            // – Point p, целое число (левосторонняя операция, уменьшается координата х)
+            //Point point_leftx = new Point(x, y);
+            try 
+            {
+                Console.Write("Введите целое число на которое нужно уменьшить координату x: ");
+                int num1 = Convert.ToInt32(Console.ReadLine());
+                point = point - num1;
+                Console.WriteLine(point.ToString());
+
+                // – целое число, Point p (правосторонняя операция, уменьшается координата y)
+                Console.Write("Введите целое число на которое нужно уменьшить координату y: ");
+                int num2 = Convert.ToInt32(Console.ReadLine());
+                point = num2 - point;
+                Console.WriteLine(point.ToString());
+            }
+            catch
+            {
+                Console.WriteLine("Неверный тип данных! Должен быть int");
+            }
+
+
+
+            // – Point p – вычисляется расстояние до точки p, результатом должно быть вещественное число.
+            try
+            {
+                Console.Write("Введите координату x2: ");
+                double x2 = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Введите координату y2: ");
+                double y2 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine();
+
+                Point point2 = new Point(x2, y2);
+                Console.WriteLine((point - point2).ToString());
+            }
+            catch 
+            { 
+                Console.WriteLine("Неверный тип данных! Должен быть int");
+            }
+
+            
         }
     }
 }
