@@ -10,7 +10,6 @@ namespace l4
 {
     internal class Collections
     {
-        //общий метод вывода коллекций
 
         //1.9
         //без метода Reverse
@@ -97,7 +96,7 @@ namespace l4
                 else
                 {
                     Console.Write("Введите эл-т списка под индексом " + i + ": ");
-                    lst.AddLast(Convert.ToInt32(Console.ReadLine()));
+                    lst.AddLast(Inspector.CheckInt32("Введите эл-т списка под индексом " + i + ": "));
                 }
 
             }
