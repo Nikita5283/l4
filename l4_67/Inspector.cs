@@ -42,7 +42,7 @@ namespace l4_67
                     return x;
                 }
 
-                Console.WriteLine("Неверный тип данных! Должен быть double");
+                Console.WriteLine("Неверный тип данных! Должен быть int");
             }
         }
     }

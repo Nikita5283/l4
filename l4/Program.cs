@@ -12,18 +12,16 @@
 
             //2.9
             Console.WriteLine("2.9");
-            Console.WriteLine("Введите элемент F: ");
-            int F = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите элемент E слева и справа от которого нужно вставить элемент F: ");
-            int E = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите индекс, на который нужно поместить эл-т E");
-            int indE = Convert.ToInt32(Console.ReadLine());
+            int F = Inspector.CheckInt32("Введите элемент F: ");
+
+            int E = Inspector.CheckInt32("Введите элемент E слева и справа от которого нужно вставить элемент F: ");
+
+            int indE = Inspector.CheckInt32("Введите индекс, на который нужно поместить эл-т E: ");
             Collections.Insert(F, E, indE);
 
             //3.9
             Console.WriteLine("3.9");
-            Console.WriteLine("Введите кол-во дискотек: ");
-            int count_discos = Convert.ToInt32(Console.ReadLine());
+            int count_discos = Inspector.CheckInt32("Введите кол-во дискотек: ");
             Collections.Discos(count_discos);
 
             //4.9

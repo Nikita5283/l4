@@ -15,14 +15,12 @@ namespace l4
         //без метода Reverse
         private static List<int> CreateList()
         {
-            Console.Write("Введите длину списка: ");
-            int len_list = Convert.ToInt32(Console.ReadLine());
+            int len_list = Inspector.CheckInt32("Введите длину списка: ");
             List<int> lst = new List<int>();
 
             for (int i = 0; i < len_list; i++)
             {
-                Console.Write("Введите эл-т списка под индексом " + i + ": ");
-                lst.Add(Convert.ToInt32(Console.ReadLine()));
+                lst.Add(Inspector.CheckInt32("Введите эл-т списка под индексом " + i + ": "));
             }
             return lst;
         }
@@ -78,8 +76,7 @@ namespace l4
         //2.9
         private static LinkedList<int> CreateLinkedList(int E, int indE)
         {
-            Console.Write("Введите длину списка: ");
-            int len_list = Convert.ToInt32(Console.ReadLine());
+            int len_list = Inspector.CheckInt32("Введите длину списка: ");
             LinkedList<int> lst = new LinkedList<int>();
 
             for (int i = 0; i < len_list; i++)
@@ -95,7 +92,6 @@ namespace l4
                 }
                 else
                 {
-                    Console.Write("Введите эл-т списка под индексом " + i + ": ");
                     lst.AddLast(Inspector.CheckInt32("Введите эл-т списка под индексом " + i + ": "));
                 }
 
@@ -140,8 +136,7 @@ namespace l4
         private static HashSet<string> CreateHashSet(int num_disc)
         {
             HashSet<string> set = new HashSet<string>();
-            Console.WriteLine("Введите кол-во студентов дискотеки " + num_disc + ": ");
-            int len_set = Convert.ToInt32(Console.ReadLine());
+            int len_set = Inspector.CheckInt32("Введите кол-во студентов дискотеки " + num_disc + ": ");
             for (int i = 0; i < len_set; i++)
             {
                 Console.Write("Введите " + (i + 1) + " студента: ");
@@ -256,8 +251,7 @@ namespace l4
         //5.9
         private static void CreateFileForApplicants()
         {
-            Console.WriteLine("Введите кол-во абитуриетов, принимавших участие в тестировании(N): ");
-            string N = Console.ReadLine();
+            int N = Inspector.CheckInt32("Введите кол-во абитуриетов, принимавших участие в тестировании(N): ");
 
             string path = "applicants.txt";
 
@@ -271,7 +265,7 @@ namespace l4
                         "<Баллы> – строка, содержащая два целых числа,\nразделенных пробелом – баллы, полученные на тестировании по каждому из трёх предметов." +
                         "При этом <Фамилия> и <Имя>, <Имя> и <Баллы> разделены одним пробелом.\n" +
                         "Пример входной строки:\nРоманов Вельямин 48 39 55");
-                for (int i = 0; i < Convert.ToInt32(N); i++)
+                for (int i = 0; i < N; i++)
                 {
                     Console.Write("Введите " + (i+1) + " строку: ");
                     string line = Console.ReadLine();
