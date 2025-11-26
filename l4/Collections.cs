@@ -149,64 +149,50 @@ namespace l4
 
         public static void Discos(int count_discos)
         {
-            //массив множеств дискотек
-            HashSet<string>[] discs = new HashSet<string>[count_discos];
-            //создание множеств дискотек
-            for (int i = 0; i < discs.Length; i++)
+            HashSet<string>[] discos = new HashSet<string>[count_discos];
+
+            for (int i = 0; i < count_discos; i++)
+                discos[i] = CreateHashSet(i + 1);
+
+            HashSet<string> allStudents = new HashSet<string>();
+
+            foreach (var d in discos)
+                allStudents.UnionWith(d);
+
+            List<int> nobody = new();
+            List<int> all = new();
+            List<int> some = new();
+
+            for (int i = 0; i < discos.Length; i++)
             {
-                discs[i] = CreateHashSet(i + 1);
+                var d = discos[i];
+
+                if (d.Count == 0)
+                {
+                    nobody.Add(i + 1);
+                }
+                else if (d.SetEquals(allStudents))
+                {
+                    all.Add(i + 1);
+                }
+                else
+                {
+                    some.Add(i + 1);
+                }
             }
 
-            HashSet<string> students = new HashSet<string>();
+            Console.WriteLine("никто не ходил на дискотеки: " +
+                              (nobody.Count == 0 ? "-" : string.Join(", ", nobody)));
 
-            //заполнение множества студентов из множеств дискотек
-            for (int i = 0; i < discs.Length; i++)
-            {
-                foreach (string stud in discs[i])
-                {
-                    students.Add(stud);
-                }
-                Console.WriteLine();
-            }
+            Console.WriteLine("ходили все студенты на дискотеки: " +
+                              (all.Count == 0 ? "-" : string.Join(", ", all)));
 
-            //вывод множеств
-            for (int i = 0; i < discs.Length; i++)
-            {
-                Console.Write("Дискотека " + (i + 1) + ": ");
-                foreach (string stud in discs[i])
-                {
-                    Console.Write(stud + " ");
-                }
-                Console.WriteLine();
-            }
-
-            Console.WriteLine("Студенты: ");
-            foreach (string stud in students)
-            {
-                Console.Write(stud + " ");
-            }
-            Console.WriteLine();
-
-            for (int i = 0; i < discs.Length; i++)
-            {
-                discs[i].IntersectWith(students);
-
-                if (discs[i].Count == students.Count)
-                {
-                    Console.WriteLine("На дискотеку " + (i + 1) + " ходили все студенты группы");
-                }
-                else if (discs[i].Count == 0)
-                {
-                    Console.WriteLine("На дискотеку " + (i + 1) + " не ходил ни один из студентов группы");
-                }
-                else if (discs[i] != students)
-                {
-                    Console.WriteLine("На дискотеку " + (i + 1) + " ходили некоторые студенты группы");
-                }
-
-            }
-
+            Console.WriteLine("ходили некоторые студенты на дискотеки: " +
+                              (some.Count == 0 ? "-" : string.Join(", ", some)));
         }
+
+
+
 
         //4.9
         public static void Symbols()
